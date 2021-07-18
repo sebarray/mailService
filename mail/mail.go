@@ -23,7 +23,7 @@ func checker(err error) {
 	}
 }
 
-func Mail(Reclu, Msg string) {
+func Mail(Msg, Reclu string) {
 	mailFrom := os.Getenv("mailfrom")
 	mailTo := os.Getenv("mailto")
 	passw := os.Getenv("psw")

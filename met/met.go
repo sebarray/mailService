@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-
-	"../mail"
+	"servicemail/mail"
 )
 
 type reclut struct {
@@ -22,8 +21,9 @@ func SendMail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.Unmarshal(reqbody, &newReclut) // asigno los valores  recibido al struct
+	fmt.Print(newReclut)
 	mail.Mail(newReclut.Msg, newReclut.Reclu)
-	//
+
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(newReclut)
